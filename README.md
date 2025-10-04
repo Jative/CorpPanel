@@ -12,23 +12,23 @@
 - Современный тёмный интерфейс
 - Flash-сообщения об ошибках и успехе
 
+
 ## Быстрый старт
 1. Клонируйте репозиторий
-2. Создайте и активируйте виртуальное окружение:
+2. Настройте параметры подключения к БД в `config.py` или через переменные окружения
+3. Запустите через Docker:
    ```bash
-   python3 -m venv venv
-   source venv/bin/activate
+   docker build -t corppanel .
+   docker run -it --rm -p 5000:5000 \
+     -e DB_HOST=host.docker.internal \
+     -e DB_PORT=5432 \
+     -e DB_NAME=your_db \
+     -e DB_USER=your_user \
+     -e DB_PASSWORD=your_password \
+     corppanel
    ```
-3. Установите зависимости:
-   ```bash
-   pip install -r requirements.txt
-   ```
-4. Настройте параметры подключения к БД в `config.py` или через переменные окружения
-5. Запустите приложение:
-   ```bash
-   python app.py
-   ```
-6. Откройте в браузере http://localhost:5000
+   (или используйте обычный Python, как раньше)
+4. Откройте в браузере http://localhost:5000
 
 ## Скриншоты
 
