@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Справочник сотрудников</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container mt-5">
+    <h2>Справочник сотрудников</h2>
+    <table class="table table-bordered table-sm">
+        <thead><tr>
+            <th>ФИО</th><th>Отдел</th><th>Должность</th><th>Раб. телефон</th>
+        </tr></thead>
+        <tbody>
+        {% for d in directory %}
+        <tr>
+            <td>{{ d[0] }}</td><td>{{ d[1] }}</td><td>{{ d[2] }}</td><td>{{ d[3] }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ url_for('dashboard') }}" class="btn btn-secondary mt-3">Назад</a>
+</div>
+</body>
+</html>

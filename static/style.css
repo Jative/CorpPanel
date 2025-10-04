@@ -1,0 +1,145 @@
+.form-label {
+	display: block;
+	min-width: 140px;
+	margin-bottom: 0.3rem;
+	font-weight: 500;
+	color: #b0b0b0;
+}
+.mb-3 {
+	margin-bottom: 1rem !important;
+}
+.form-control {
+	width: 100%;
+	box-sizing: border-box;
+}
+.login-box form .mb-3 {
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+}
+.dashboard-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+	list-style: none;
+	padding: 0;
+}
+.dashboard-list li {
+	flex: 1 1 180px;
+	max-width: 220px;
+}
+.dashboard-link {
+	display: block;
+	background: #23272b;
+	color: #2d8cf0 !important;
+	border: 1px solid #2d8cf0;
+	border-radius: 8px;
+	padding: 1rem 1.2rem;
+	text-align: center;
+	font-size: 1.1rem;
+	font-weight: 500;
+	text-decoration: none !important;
+	transition: background 0.2s, color 0.2s;
+	margin-bottom: 0.5rem;
+}
+.dashboard-link:hover {
+	background: #2d8cf0;
+	color: #fff !important;
+}
+body {
+	background: #181c20;
+	color: #e0e0e0;
+	min-height: 100vh;
+}
+.container {
+	background: #23272b;
+	border-radius: 12px;
+	box-shadow: 0 2px 16px #0008;
+	padding: 2.5rem 2rem;
+	margin-top: 3rem;
+}
+h2 {
+	margin-bottom: 1.5rem;
+	color: #fff;
+}
+form .row > .col, form .mb-3 {
+	min-width: 120px;
+}
+table {
+	background: #23272b;
+	color: #e0e0e0;
+}
+thead {
+	background: #181c20;
+	color: #b0b0b0;
+}
+.btn, button, input[type="submit"] {
+	min-width: 90px;
+	background: #2d8cf0;
+	color: #fff !important;
+	border: none;
+	border-radius: 5px;
+	padding: 0.4rem 1.1rem;
+	font-weight: 500;
+	cursor: pointer;
+	text-decoration: none !important;
+	transition: background 0.2s;
+	display: inline-block;
+}
+.btn-danger {
+	background: #e74c3c !important;
+}
+.btn-secondary {
+	background: #444c56 !important;
+}
+.btn-success {
+	background: #27ae60 !important;
+}
+.btn:hover, button:hover, input[type="submit"]:hover {
+	background: #186dd6;
+}
+.btn-danger:hover {
+	background: #c0392b !important;
+}
+.btn-secondary:hover {
+	background: #23272b !important;
+}
+.btn-success:hover {
+	background: #219150 !important;
+}
+.mt-3, .mt-4 {
+	margin-top: 1.5rem !important;
+}
+.mb-4 {
+	margin-bottom: 1.5rem !important;
+}
+input, select, textarea {
+	background: #23272b;
+	color: #e0e0e0;
+	border: 1px solid #444c56;
+	border-radius: 5px;
+	padding: 0.4rem 0.7rem;
+	margin-bottom: 0.5rem;
+}
+input:focus, select:focus, textarea:focus {
+	outline: none;
+	border-color: #2d8cf0;
+}
+form {
+	margin-bottom: 1.5rem;
+}
+/* Центрирование окна входа */
+.login-center {
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.login-box {
+	background: #23272b;
+	border-radius: 12px;
+	box-shadow: 0 2px 16px #0008;
+	padding: 2.5rem 2rem;
+	width: 100%;
+	max-width: 400px;
+}

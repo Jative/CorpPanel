@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Главная</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container mt-5">
+    <h2>Добро пожаловать в систему!</h2>
+    <p>Выберите раздел в меню.</p>
+    <ul class="dashboard-list mt-4">
+        {% if role == 'hr_manager' %}
+        <li><a class="dashboard-link" href="{{ url_for('personnel') }}">Управление персоналом</a></li>
+        <li><a class="dashboard-link" href="{{ url_for('divisions') }}">Управление отделами</a></li>
+        {% endif %}
+        {% if role == 'security_officer' %}
+        <li><a class="dashboard-link" href="{{ url_for('badges') }}">Просмотр пропусков</a></li>
+        {% endif %}
+        {% if role == 'department_employee' %}
+        <li><a class="dashboard-link" href="{{ url_for('directory') }}">Справочник сотрудников</a></li>
+        <li><a class="dashboard-link" href="{{ url_for('internal_docs') }}">Внутренние документы</a></li>
+        {% endif %}
+    </ul>
+    <a href="{{ url_for('logout') }}" class="btn btn-secondary mt-3">Выйти</a>
+</div>
+</body>
+</html>

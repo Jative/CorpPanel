@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Внутренние документы</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container mt-5">
+    <h2>Внутренние документы</h2>
+    <table class="table table-bordered table-sm">
+        <thead><tr>
+            <th>ID</th><th>Название</th><th>Автор</th><th>Дата</th><th>Уровень</th>
+        </tr></thead>
+        <tbody>
+        {% for doc in docs %}
+        <tr>
+            <td>{{ doc[0] }}</td><td>{{ doc[1] }}</td><td>{{ doc[3] }}</td><td>{{ doc[4] }}</td><td>{{ doc[5] }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ url_for('dashboard') }}" class="btn btn-secondary mt-3">Назад</a>
+</div>
+</body>
+</html>

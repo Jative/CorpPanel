@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Управление персоналом</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container mt-5">
+        <h2>Управление персоналом</h2>
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        <div id="flash-messages" style="position:fixed;top:32px;left:50%;transform:translateX(-50%);z-index:1000;min-width:320px;max-width:90vw;pointer-events:none;">
+                            {% for message in messages %}
+                                <div class="flash-message" style="background:#e74c3c;color:#fff;padding:0.7rem 1.2rem;border-radius:6px;margin-bottom:0.5rem;box-shadow:0 2px 12px #0006;text-align:center;pointer-events:auto;">{{ message }}</div>
+                            {% endfor %}
+                        </div>
+                        <script>
+                            setTimeout(function() {
+                                var el = document.getElementById('flash-messages');
+                                if (el) el.style.display = 'none';
+                            }, 3500);
+                        </script>
+                    {% endif %}
+                {% endwith %}
+    <form method="post" class="mb-4">
+        <div class="row g-2">
+            <div class="col"><input type="text" name="full_name" class="form-control" placeholder="ФИО" required></div>
+            <div class="col">
+                <select name="division_id" class="form-select" required>
+                    <option value="">Отдел</option>
+                    {% for d in divisions %}
+                    <option value="{{ d[0] }}">{{ d[1] }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col"><input type="text" name="role" class="form-control" placeholder="Должность" required></div>
+            <div class="col"><input type="date" name="join_date" class="form-control" required></div>
+            <div class="col"><input type="email" name="personal_email" class="form-control" placeholder="Email" required></div>
+            <div class="col"><input type="text" name="contact_number" class="form-control" placeholder="Телефон"></div>
+            <div class="col"><input type="text" name="work_phone" class="form-control" placeholder="Раб. телефон"></div>
+            <div class="col"><button type="submit" class="btn btn-success">Добавить</button></div>
+        </div>
+    </form>
+    <table class="table table-bordered table-sm">
+        <thead><tr>
+            <th>ID</th><th>ФИО</th><th>Отдел</th><th>Должность</th><th>Дата приёма</th><th>Email</th><th>Телефон</th><th>Раб. телефон</th><th></th>
+        </tr></thead>
+        <tbody>
+        {% for p in personnel %}
+        <tr>
+            <td>{{ p[0] }}</td><td>{{ p[1] }}</td><td>{{ p[2] }}</td><td>{{ p[3] }}</td><td>{{ p[4] }}</td><td>{{ p[5] }}</td><td>{{ p[6] }}</td><td>{{ p[7] }}</td>
+            <td><a href="{{ url_for('delete_personnel', personnel_id=p[0]) }}" class="btn btn-danger btn-sm">Удалить</a></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ url_for('dashboard') }}" class="btn btn-secondary mt-3">Назад</a>
+</div>
+</body>
+</html>

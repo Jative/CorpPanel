@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Пропуска</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container mt-5">
+    <h2>Пропуска</h2>
+    <table class="table table-bordered table-sm">
+        <thead><tr>
+            <th>ID</th><th>Сотрудник</th><th>Дата выдачи</th><th>Действителен</th>
+        </tr></thead>
+        <tbody>
+        {% for b in badges %}
+        <tr>
+            <td>{{ b[0] }}</td><td>{{ b[1] }}</td><td>{{ b[2] }}</td><td>{{ 'Да' if b[3] else 'Нет' }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ url_for('dashboard') }}" class="btn btn-secondary mt-3">Назад</a>
+</div>
+</body>
+</html>

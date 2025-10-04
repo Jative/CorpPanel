@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Управление отделами</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="container mt-5">
+    <h2>Управление отделами</h2>
+    <form method="post" class="mb-4">
+        <div class="row g-2">
+            <div class="col"><input type="text" name="division_name" class="form-control" placeholder="Название отдела" required></div>
+            <div class="col">
+                <select name="director_id" class="form-select">
+                    <option value="">Директор</option>
+                    {% for p in personnel %}
+                    <option value="{{ p[0] }}">{{ p[1] }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col"><button type="submit" class="btn btn-success">Добавить</button></div>
+        </div>
+    </form>
+    <table class="table table-bordered table-sm">
+        <thead><tr>
+            <th>ID</th><th>Название</th><th>Директор</th><th></th>
+        </tr></thead>
+        <tbody>
+        {% for d in divisions %}
+        <tr>
+            <td>{{ d[0] }}</td><td>{{ d[1] }}</td><td>{{ d[2] }}</td>
+            <td><a href="{{ url_for('delete_division', division_id=d[0]) }}" class="btn btn-danger btn-sm">Удалить</a></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ url_for('dashboard') }}" class="btn btn-secondary mt-3">Назад</a>
+</div>
+</body>
+</html>
