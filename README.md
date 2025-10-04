@@ -33,12 +33,13 @@
 ## Скриншоты
 
 
-## Скриншоты
+## ERD (диаграмма связей)
 
 <div align="center">
    <img src="screenshots/erd.png" alt="ERD" width="600" style="margin-bottom: 1.5rem; border-radius: 8px; box-shadow: 0 2px 12px #0003;">
-   <br><b>ERD (диаграмма связей)</b>
 </div>
+
+## Скриншоты
 
 <div align="center" style="display: flex; flex-wrap: wrap; gap: 24px; justify-content: center;">
    <div style="margin: 1rem; display: inline-block;">
