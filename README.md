@@ -43,31 +43,31 @@
 
 <div align="center" style="display: flex; flex-wrap: wrap; gap: 24px; justify-content: center;">
    <div style="margin: 1rem; display: inline-block;">
-      <img src="screenshots/login.png" alt="Login" width="320" style="border-radius: 8px; box-shadow: 0 2px 12px #0003;">
+      <img src="screenshots/login.png" alt="Login" width="480" style="border-radius: 8px; box-shadow: 0 2px 12px #0003;">
       <br><sub>Окно входа</sub>
    </div>
    <div style="margin: 1rem; display: inline-block;">
-      <img src="screenshots/dashboard.png" alt="Dashboard" width="320" style="border-radius: 8px; box-shadow: 0 2px 12px #0003;">
+      <img src="screenshots/dashboard.png" alt="Dashboard" width="480" style="border-radius: 8px; box-shadow: 0 2px 12px #0003;">
       <br><sub>Главная страница (меню)</sub>
    </div>
    <div style="margin: 1rem; display: inline-block;">
-      <img src="screenshots/personnel.png" alt="Personnel" width="320" style="border-radius: 8px; box-shadow: 0 2px 12px #0003;">
+      <img src="screenshots/personnel.png" alt="Personnel" width="480" style="border-radius: 8px; box-shadow: 0 2px 12px #0003;">
       <br><sub>Управление персоналом</sub>
    </div>
    <div style="margin: 1rem; display: inline-block;">
-      <img src="screenshots/divisions.png" alt="Divisions" width="320" style="border-radius: 8px; box-shadow: 0 2px 12px #0003;">
+      <img src="screenshots/divisions.png" alt="Divisions" width="480" style="border-radius: 8px; box-shadow: 0 2px 12px #0003;">
       <br><sub>Управление отделами</sub>
    </div>
    <div style="margin: 1rem; display: inline-block;">
-      <img src="screenshots/badges.png" alt="Badges" width="320" style="border-radius: 8px; box-shadow: 0 2px 12px #0003;">
+      <img src="screenshots/badges.png" alt="Badges" width="480" style="border-radius: 8px; box-shadow: 0 2px 12px #0003;">
       <br><sub>Просмотр пропусков</sub>
    </div>
    <div style="margin: 1rem; display: inline-block;">
-      <img src="screenshots/directory.png" alt="Directory" width="320" style="border-radius: 8px; box-shadow: 0 2px 12px #0003;">
+      <img src="screenshots/directory.png" alt="Directory" width="480" style="border-radius: 8px; box-shadow: 0 2px 12px #0003;">
       <br><sub>Справочник сотрудников</sub>
    </div>
    <div style="margin: 1rem; display: inline-block;">
-      <img src="screenshots/internal_docs.png" alt="Docs" width="320" style="border-radius: 8px; box-shadow: 0 2px 12px #0003;">
+      <img src="screenshots/internal_docs.png" alt="Docs" width="480" style="border-radius: 8px; box-shadow: 0 2px 12px #0003;">
       <br><sub>Внутренние документы</sub>
    </div>
 </div>
