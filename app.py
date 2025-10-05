@@ -5,6 +5,12 @@ from utils import hash_password, verify_password
 from config import Config
 import psycopg2
 
+
+"""
+Основной модуль Flask-приложения CorpPanel.
+Реализует аутентификацию, разграничение ролей и работу с таблицами БД через веб-интерфейс.
+"""
+
 app = Flask(__name__)
 app.config.from_object(Config)
 
@@ -16,12 +22,25 @@ USER_ROLE_MAP = {
 }
 
 def get_user_role(username):
+    """
+    Получить роль пользователя по имени.
+    :param username: Имя пользователя
+    :return: Роль (строка) или None
+    """
     return USER_ROLE_MAP.get(username)
 
 def is_logged_in():
+    """
+    Проверяет, авторизован ли пользователь.
+    :return: True, если пользователь в сессии
+    """
     return 'username' in session
 
 def require_role(*roles):
+    """
+    Декоратор для ограничения доступа по ролям.
+    :param roles: Разрешённые роли
+    """
     def decorator(f):
         def wrapper(*args, **kwargs):
             if not is_logged_in() or session.get('role') not in roles:
@@ -34,12 +53,18 @@ def require_role(*roles):
 
 @app.route('/')
 def index():
+    """
+    Корневой маршрут. Перенаправляет на login или dashboard.
+    """
     if not is_logged_in():
         return redirect(url_for('login'))
     return redirect(url_for('dashboard'))
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    """
+    Страница входа. Обрабатывает POST для аутентификации.
+    """
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
@@ -71,11 +96,17 @@ def login():
 
 @app.route('/logout')
 def logout():
+    """
+    Выход пользователя. Очищает сессию.
+    """
     session.clear()
     return redirect(url_for('login'))
 
 @app.route('/dashboard')
 def dashboard():
+    """
+    Главная страница после входа. Показывает меню по ролям.
+    """
     if not is_logged_in():
         return redirect(url_for('login'))
     return render_template('dashboard.html', role=session.get('role'))
@@ -84,6 +115,9 @@ def dashboard():
 @app.route('/personnel', methods=['GET', 'POST'])
 @require_role('hr_manager')
 def personnel():
+    """
+    Управление персоналом (CRUD). Только для HR-менеджера.
+    """
     conn = get_db_connection()
     cur = conn.cursor()
     if request.method == 'POST':
@@ -115,6 +149,9 @@ def personnel():
 @app.route('/personnel/delete/<int:personnel_id>')
 @require_role('hr_manager')
 def delete_personnel(personnel_id):
+    """
+    Удаление сотрудника по ID. Только для HR-менеджера.
+    """
     conn = get_db_connection()
     cur = conn.cursor()
     try:
@@ -132,6 +169,9 @@ def delete_personnel(personnel_id):
 @app.route('/divisions', methods=['GET', 'POST'])
 @require_role('hr_manager')
 def divisions():
+    """
+    Управление отделами (CRUD). Только для HR-менеджера.
+    """
     conn = get_db_connection()
     cur = conn.cursor()
     if request.method == 'POST':
@@ -155,6 +195,9 @@ def divisions():
 @app.route('/divisions/delete/<int:division_id>')
 @require_role('hr_manager')
 def delete_division(division_id):
+    """
+    Удаление отдела по ID. Только для HR-менеджера.
+    """
     conn = get_db_connection()
     cur = conn.cursor()
     try:
@@ -172,6 +215,9 @@ def delete_division(division_id):
 @app.route('/badges')
 @require_role('security_officer')
 def badges():
+    """
+    Просмотр пропусков. Только для сотрудника ИБ.
+    """
     conn = get_db_connection()
     cur = conn.cursor()
     cur.execute('''SELECT b.badge_id, p.full_name, b.issuance_date, b.is_valid
@@ -186,6 +232,9 @@ def badges():
 @app.route('/directory')
 @require_role('department_employee')
 def directory():
+    """
+    Просмотр справочника сотрудников. Только для обычного сотрудника.
+    """
     conn = get_db_connection()
     cur = conn.cursor()
     cur.execute('SELECT * FROM v_employee_directory ORDER BY full_name')
@@ -198,6 +247,9 @@ def directory():
 @app.route('/internal_docs')
 @require_role('department_employee')
 def internal_docs():
+    """
+    Просмотр внутренних документов. Только для обычного сотрудника.
+    """
     conn = get_db_connection()
     cur = conn.cursor()
     cur.execute('SELECT * FROM v_internal_docs ORDER BY creation_date DESC')
